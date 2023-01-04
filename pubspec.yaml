@@ -1,7 +1,7 @@
 name: suprsend_flutter_inbox
 description: Flutter sdk for integrating inbox functionality using flutter hooks
 version: 0.0.1
-homepage:
+homepage: "https://www.suprsend.com/"
 
 environment:
   sdk: ">=2.18.4 <3.0.0"
@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   crypto: ^3.0.2
   flutter_hooks: ^0.18.5+1
+  flutter_bloc: ^8.1.1
   hooked_bloc: ^1.2.1
   http: ^0.13.5
   shared_preferences: ^2.0.15
