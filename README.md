@@ -97,10 +97,8 @@ Noticication structure:
 }
 ```
 
+**NOTE**: Example implementation can be found here: https://github.com/suprsend/suprsend-flutter-sdk/blob/main/example/lib/main.dart
+
 ## License
 
 MIT © [https://github.com/suprsend](https://github.com/suprsend)
-
-```
-
-```
