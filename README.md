@@ -1,39 +1,106 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+SuprSend SDK for Flutter applications for integrating inbox functionality using flutter hooks
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+## Installation
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+**Step 1. Open your Flutter project’s pubspec.yaml file**
+Add following line of code inside dependencies in `pubspec.yaml` file
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+```
+dependencies:
+  flutter:
+  	sdk: flutter
+  suprsend_flutter_inbox: "^0.0.1"
 ```
 
-## Additional information
+**Step 2. Run `flutter pub get` in the terminal**
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```
+$ flutter pub get
+```
+
+## Initialization
+
+Enclose your Material App inside SuprSendProvider and pass workspace key, workspace secret, distinct_id, subscriber_id.
+
+```
+import 'package:suprsend_flutter_inbox/main.dart';
+
+SuprSendProvider(
+    workspaceKey: <your workspace key>,
+    workspaceSecret:  <your workspace secret>,
+    distinctId: distinct_id,
+    subscriberId: subscriber_id,
+    child: YourAppComponent()
+)
+```
+
+NOTE: Only inside SuprSendProvider you will be able to call suprsend hooks.
+
+## Useage
+
+### useBell
+
+This hook is used to get unSeenCount, markAllSeen. markAllSeen should be called when user clicks on bell icon so that notification count can be reset to 0.
+
+```
+import 'package:suprsend_flutter_inbox/main.dart';
+
+final bellData = useBell();
+```
+
+```
+bellData structure:
+
+{
+  "unSeenCount": int,
+  "markAllSeen": ()=>void
+}
+```
+
+### useNotifications
+
+This hook is used to get notifications list, unSeenCount, markAllSeen, markClicked. markClicked needs to be called when user clics on any of the notification item
+
+```
+import 'package:suprsend_flutter_inbox/main.dart';
+
+final notifData = useNotifications();
+```
+
+```
+notifData structure:
+
+{
+  "notifications": List<Noticication>,
+  "unSeenCount": int,
+  "markAllSeen": ()=>void
+  "markClicked":(notification_id)=>void
+}
+
+Noticication structure:
+
+{
+  "created_on": int,
+  "seen_on": int,
+  "message": {
+    "header": string,
+    "text": string,
+    "url": string,
+    "actions:[
+      {
+        "name": string,
+        "url": string
+      }
+    ]
+  },
+  "n_id": string
+}
+```
+
+## License
+
+MIT © [https://github.com/suprsend](https://github.com/suprsend)
+
+```
+
+```
