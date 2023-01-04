@@ -36,7 +36,7 @@ SuprSendProvider(
 
 NOTE: Only inside SuprSendProvider you will be able to call suprsend hooks.
 
-## Useage
+## Usage
 
 ### useBell
 
