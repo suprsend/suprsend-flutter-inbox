@@ -9,7 +9,7 @@ Add following line of code inside dependencies in `pubspec.yaml` file
 dependencies:
   flutter:
   	sdk: flutter
-  suprsend_flutter_inbox: "^0.0.1"
+  suprsend_flutter_inbox: "^0.0.2"
 ```
 
 **Step 2. Run `flutter pub get` in the terminal**
